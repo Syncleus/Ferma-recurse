@@ -1,8 +1,7 @@
-/**
- * ***************************************************************************
- * *
+/******************************************************************************
+ *                                                                            *
  * Copyright: (c) Syncleus, Inc.                                              *
- * *
+ *                                                                            *
  * You may redistribute and modify this source code under the terms and       *
  * conditions of the Open Source Community License - Type C version 1.0       *
  * or any later version as published by Syncleus, Inc. at www.syncleus.com.   *
@@ -11,14 +10,18 @@
  * otherwise use this file except through a legal and valid license. You      *
  * should also contact Syncleus, Inc. at the information below if you cannot  *
  * find a license:                                                            *
- * *
+ *                                                                            *
  * Syncleus, Inc.                                                             *
  * 2604 South 12th Street                                                     *
  * Philadelphia, PA 19148                                                     *
- * *
- * ****************************************************************************
- */
-package com.syncleus.recursivegraph.graph;
+ *                                                                            *
+ ******************************************************************************/
+package com.syncleus.ferma.recurse;
 
-public interface GodExtended extends GodIntermediate {
+public interface RecursiveGraphFactory<G extends RecursiveGraph<?>> {
+  RecursiveGraphFactory<G> getParent();
+
+  <N> N getId();
+
+  G subgraph(Object id);
 }
