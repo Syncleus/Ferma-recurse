@@ -85,7 +85,7 @@ public class DelegatingRecursiveGraph<G extends RecursiveTransactionalGraph<?>> 
 
   @Override
   public <N> N getId() {
-    return null;
+    return (N) this.id;
   }
 
   @Override
