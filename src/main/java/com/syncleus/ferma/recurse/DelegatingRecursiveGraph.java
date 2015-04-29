@@ -15,7 +15,8 @@
  * 2604 South 12th Street                                                     *
  * Philadelphia, PA 19148                                                     *
  *                                                                            *
- ******************************************************************************/package com.syncleus.ferma.recurse;
+ ******************************************************************************/
+package com.syncleus.ferma.recurse;
 
 import com.syncleus.ferma.DelegatingFramedTransactionalGraph;
 import com.syncleus.ferma.FrameFactory;
