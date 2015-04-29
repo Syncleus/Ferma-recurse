@@ -27,7 +27,12 @@ import com.tinkerpop.blueprints.impls.tg.TinkerGraph;
 import java.util.Collection;
 
 public class TinkerRecursiveGraphFactory extends AbstractDelegatingRecursiveGraphFactory<TransactionalGraph> {
-  private static final TinkerGraphFactory FACTORY = new TinkerGraphFactory();
+  private static final GraphFactory<TransactionalGraph> FACTORY = new GraphFactory<TransactionalGraph>() {
+    @Override
+    public TransactionalGraph constructGraph(RecursiveGraphFactory parent, Object id) {
+      return new MockTransactionalGraph(new TinkerGraph());
+    }
+  };
 
   public TinkerRecursiveGraphFactory() {
     super(FACTORY);
@@ -59,12 +64,5 @@ public class TinkerRecursiveGraphFactory extends AbstractDelegatingRecursiveGrap
 
   public TinkerRecursiveGraphFactory(boolean typeResolution, Collection<? extends Class<?>> annotatedTypes) {
     super(FACTORY, typeResolution, annotatedTypes);
-  }
-
-  private static class TinkerGraphFactory implements GraphFactory<TransactionalGraph> {
-    @Override
-    public TransactionalGraph constructGraph(RecursiveGraphFactory parent, Object id) {
-      return new MockTransactionalGraph(new TinkerGraph());
-    }
   }
 }
